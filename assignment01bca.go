@@ -28,7 +28,7 @@ type BlockList struct {
 	list []*Block
 }
 
-func (ls *BlockList) Addblock(n int, t string) *Block {
+func (ls *BlockList) AddBlock(n int, t string) *Block {
 	st := Newblock(n, t)
 
 	if VerifyChain(ls) {
