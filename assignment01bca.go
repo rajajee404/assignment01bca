@@ -1,4 +1,4 @@
-package main
+package assignment01bca
 
 import (
 	//	"bufio"
