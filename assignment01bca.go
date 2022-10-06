@@ -28,7 +28,7 @@ type BlockList struct {
 	list []*Block
 }
 
-func (ls *BlockList) addblock(n int, t string) *Block {
+func (ls *BlockList) Addblock(n int, t string) *Block {
 	st := Newblock(n, t)
 
 	if VerifyChain(ls) {
@@ -40,7 +40,7 @@ func (ls *BlockList) addblock(n int, t string) *Block {
 		return nil
 	}
 }
-func listblocks(stud *BlockList) {
+func ListBlocks(stud *BlockList) {
 	fmt.Println("")
 	fmt.Println("")
 	fmt.Println("")
