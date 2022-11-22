@@ -1,3 +1,4 @@
+// importing package modded in the repository
 package assignment01bca
 
 import (
@@ -10,25 +11,25 @@ import (
 	"strings"
 )
 
-type Block struct {
+type Block struct {	//Block Struct
 	nonce       int
 	transaction string
 	phash       string
 	chash       string
 }
 
-func Newblock(n int, t string) *Block {
+func Newblock(n int, t string) *Block {	// Creating New Blocks
 	s := new(Block)
 	s.nonce = n
 	s.transaction = t
 	return s
 }
 
-type BlockList struct {
+type BlockList struct {// Blocklist Struct
 	list []*Block
 }
 
-func (ls *BlockList) AddBlock(n int, t string) *Block {
+func (ls *BlockList) AddBlock(n int, t string) *Block { // Adding Blocklist Function
 	st := Newblock(n, t)
 
 	if VerifyChain(ls) {
@@ -40,7 +41,7 @@ func (ls *BlockList) AddBlock(n int, t string) *Block {
 		return nil
 	}
 }
-func ListBlocks(stud *BlockList) {
+func ListBlocks(stud *BlockList) { // Listing Blocks Function
 	fmt.Println("")
 	fmt.Println("")
 	fmt.Println("")
@@ -58,7 +59,7 @@ func ListBlocks(stud *BlockList) {
 	fmt.Println("")
 
 }
-func (s *Block) GetString() string {
+func (s *Block) GetString() string { // Getter
 
 	var r = ""
 	r += strconv.Itoa(s.nonce)
@@ -67,7 +68,7 @@ func (s *Block) GetString() string {
 	return r
 }
 
-func CalHash(stud *BlockList) {
+func CalHash(stud *BlockList) { // Hash Function
 
 	for i := 0; i < len(stud.list); i++ {
 		sum := sha256.Sum256([]byte(stud.list[i].GetString()))
@@ -79,7 +80,7 @@ func CalHash(stud *BlockList) {
 	}
 
 }
-func VerifyChain(stud *BlockList) bool {
+func VerifyChain(stud *BlockList) bool { // Verification of Chain Function
 	var st = ""
 	for i := 0; i < len(stud.list); i++ {
 		sum := sha256.Sum256([]byte(stud.list[i].GetString()))
